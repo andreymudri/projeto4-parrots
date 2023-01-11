@@ -1,16 +1,47 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 body{
-    background-color: #e5e5e5;
+    background-color: #EEF9BF;    
+    font-family: 'Roboto', sans-serif;
+    box-sizing: border-box;
+    width: 100vw;
+    display: flex;    
+    flex-direction: column;
+    align-items: center;
 }
-
+header {
+    display:flex;
+    align-items: center;
+    justify-content: center;
+}
 h1 {
-
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
     font-size: 56px;
     line-height: 66px;
-    letter-spacing: -0.004em;
-    
+    letter-spacing: -0.004em;    
     color: #75B79E;
+}
+.cards-container {    
+  display: flex;
+  flex-wrap: wrap;  
+  justify-content: center;
+  align-items: center;
+  width: 80vw;
+}
+.cards-container > div {
+    flex: 1 0 16.66%;
+    max-width: 16.66%;
+    background-color: blue;
+    box-sizing: border-box;
+}
+.face-down{
+    opacity: 1;
+    transition: all 0s ease-in-out .5s;
+}
+.face-up {
+    opacity: 0;
+    transition: all 0s ease-in-out .5s;
+}
+img {
+    width:100%;
 }
