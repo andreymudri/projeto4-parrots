@@ -29,7 +29,6 @@ h1 {
   width: 80vw;
   max-width: 638px;
   padding: 0px 50px;
-  perspective: 1000px;
 }
 .card {
     width: 117px;
