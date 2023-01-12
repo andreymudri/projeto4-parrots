@@ -1,12 +1,26 @@
 let cartaum, cartadois;
 let cards = [];
-let cartas = [];
 const cardsContainer = document.querySelector('.cards-container');
+let jogadas = 0;
+let qtscartas;
+const images = ['bobrossparrot.gif', 'explodyparrot.gif', 'fiestaparrot.gif', 'metalparrot.gif', 'revertitparrot.gif', 'tripletsparrot.gif', 'unicornparrot.gif'];
 
-const images = ['bobrossparrot.gif','explodyparrot.gif','fiestaparrot.gif','metalparrot.gif','revertitparrot.gif','tripletsparrot.gif','unicornparrot.gif'];
-const qtscartas = prompt('quantas cartas deseja jogar?numero par de 4 a 14');
+
+
+while (qtscartas % 2 !== 0 || qtscartas < 4 || qtscartas > 14) {
+     qtscartas = prompt('quantas cartas deseja jogar?numero par de 4 a 14');
+    if(qtscartas === null) {
+        // caso cancelar
+    }    
+    qtscartas = parseInt(qtscartas);
+    if (qtscartas % 2 !== 0 || qtscartas < 4 || qtscartas > 14) {
+        alert("Input incorreto, por favor coloque um numero par entre 4 and 14.");
+    }
+}
 const pares = qtscartas / 2;
-function startGame(qtscartas) {
+startGame(qtscartas);
+
+function startGame() {
     resetJogo()
     criarcartas(pares)
 }
@@ -29,7 +43,6 @@ function criarcartas(qtscartas) {
         </div>
                 <!-- start card-->`;        
     }
-
     return
 }
 
@@ -38,12 +51,13 @@ function checarCartas() {
     if (flippedCards.length === 2) {
         cartaum = flippedCards[0];
         cartadois = flippedCards[1];
+        jogadas++;
         if (cartaum.querySelector('.frente').getAttribute('src') === cartadois.querySelector('.frente').getAttribute('src')) {
             cartaum.classList.add('is-matched');
             cartadois.classList.add('is-matched');
             if(document.querySelectorAll('.is-matched').length === cards.length){
                 setTimeout(() => {
-                    alert("game over")
+                    alert(`Você ganhou em ${jogadas} jogadas!`);
                             }, 1000);
                 return;
             }else{
@@ -61,7 +75,8 @@ function shuffle(array) {
     return array.sort(() => Math.random() - 0.5);
   }
 function resetJogo() {    
-    cardsContainer.innerHTML = "";    
+    cardsContainer.innerHTML = "";
+    jogadas = 0;
 }
 function viracarta(card) {
     card.classList.toggle('is-flipped');
