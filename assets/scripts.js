@@ -18,7 +18,7 @@ while (qtscartas % 2 !== 0 || qtscartas < 4 || qtscartas > 14) {
     }
 }
 const pares = qtscartas / 2;
-startGame(qtscartas);
+startGame();
 
 function startGame() {
     resetJogo()
